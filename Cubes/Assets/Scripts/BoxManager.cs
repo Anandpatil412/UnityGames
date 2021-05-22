@@ -43,17 +43,21 @@ public class BoxManager : MonoBehaviour
 
     public GameObject boxesParent;
 
-    public class ColContainer
-    {
-        public List<Box> colList;
-    }
+    public ColContainer columnPrefab;
 
-    List<ColContainer> containerList = new List<ColContainer>();
+    //public class ColContainer
+    //{
+        
+    //}
+
+    public List<ColContainer> containerList = new List<ColContainer>();
 
     public bool gameOver;
 
     public delegate void ScoreAddedAction();
     public static event ScoreAddedAction onScoreAdded;
+
+    private bool moreThan2Cluster = false;
 
     private void Start()
     {
@@ -110,7 +114,7 @@ public class BoxManager : MonoBehaviour
                     };
 
 
-private void SetInitBoxes()
+    private void SetInitBoxes()
     {
         float startX = transform.position.x;
         float startY = transform.position.y;
@@ -123,24 +127,28 @@ private void SetInitBoxes()
 
         for (int i = 0; i < cols; i++)
         {
-            ColContainer c = new ColContainer();
-            c.colList = new List<Box>();
+            ColContainer colObj = Instantiate(columnPrefab); //objs
+            colObj.transform.parent = boxesParent.transform;
+
+            colObj.transform.position = new Vector3(startX + (boxGap * i), boxesParent.transform.position.y);
+
+            //ColContainer c = new ColContainer();
+            colObj.colList = new List<Box>();
 
             for (int j = 0; j < level[levelIndex][i].Length; j++)
             {
-                Box newTile = Instantiate(tile, new Vector3(startX + (boxGap * i), startY + (boxGap * j), 0), tile.transform.rotation);
+                Box newTile = Instantiate(tile, new Vector3(colObj.transform.position.x, startY + (boxGap * j), 0), tile.transform.rotation);
                 newTile.GetComponent<BoxCollider2D>().enabled = true;
 
-                newTile.transform.parent = boxesParent.transform; // Add this line
+                newTile.transform.parent = colObj.transform;
         
                 Sprite newSprite = possibleCharacters[level[levelIndex][i][j]];
                 newTile.GetComponent<SpriteRenderer>().sprite = newSprite;
 
-                c.colList.Add(newTile);
+                colObj.colList.Add(newTile);
             }
 
-            containerList.Add(c);
-
+            containerList.Add(colObj);
         }
     }
 
@@ -155,88 +163,54 @@ private void SetInitBoxes()
 
     public void ClearBoxes()
     {
-        foreach (Box box in BoxesToClear)
+        if (moreThan2Cluster)
         {
-            box.GetComponent<SpriteRenderer>().sprite = null;
-            box.boxState = 0;
+            if(BoxesToClear.Count > 2)
+            {
+                foreach (Box box in BoxesToClear)
+                {
+                    box.GetComponent<SpriteRenderer>().sprite = null;
+                    box.boxState = 0;
+                }
+
+                BoxesToClear.Clear();
+
+                StartCoroutine(FindNullTiles1()); //Add this line
+            }
+            else
+            {
+                foreach (Box box in BoxesToClear)
+                    box.boxState = 0;
+
+                BoxesToClear.Clear();
+            }
+
+        }
+        else
+        {
+            foreach (Box box in BoxesToClear)
+            {
+                box.GetComponent<SpriteRenderer>().sprite = null;
+                box.boxState = 0;
+            }
+
+            BoxesToClear.Clear();
+
+            //Debug.Log("1");
+            StartCoroutine(FindNullTiles1()); //Add this line
         }
 
-        BoxesToClear.Clear();
-
-        //StopCoroutine(FindNullTiles()); //Add this line
-        StartCoroutine(FindNullTiles1()); //Add this line
+        //Debug.Log("2");
+        //checkIfAnyColEmpty();
     }
-
-    public int points;
-    public void UpdateScore()
-    {
-        points++;
-
-        if (onScoreAdded != null)
-            onScoreAdded();
-    }
-
-
-    //public IEnumerator FindNullTiles()
-    //{
-    //    for(int x = 0; x < xSize; x++)
-    //    {
-    //        for(int y = ySize - 1; y >= 0; y--)
-    //        {
-    //            if(tiles[x, y].GetComponent<SpriteRenderer>().sprite == null)
-    //            {
-    //                yield return StartCoroutine(ShiftTilesDown(x, y));
-    //                break;
-    //            }
-    //        }
-    //    }
-
-    //}
-
-    //private IEnumerator ShiftTilesDown(int x, int yStart, float shiftDelay = 0.05f)
-    //{
-    //    //IsShifting = true;
-
-    //    List<SpriteRenderer> renders = new List<SpriteRenderer>();
-
-    //    int nullCount = 0;
-
-    //    for (int y = yStart; y >= 0; y--) //ysize
-    //    {
-    //        SpriteRenderer render = tiles[x, y].GetComponent<SpriteRenderer>();
-
-    //        if (render.sprite == null)
-    //        {
-    //            nullCount++;
-    //        }
-
-    //        renders.Add(render);
-    //    }
-
-    //    for (int i = 0; i < nullCount; i++)
-    //    {
-    //        //GUIManager.instance.Score += 50; // Add this line here
-
-    //        yield return new WaitForSeconds(shiftDelay);
-
-    //        for (int k = 0; k < renders.Count - 1; k++)
-    //        {
-    //            renders[k].sprite = renders[k + 1].sprite;
-    //            renders[k + 1].sprite = emptySprite; //GetNewSprite(x, ySize - 1);
-    //        }
-    //    }
-
-    //    //IsShifting = false;
-    //}
-
 
     public IEnumerator FindNullTiles1()    //containerList[j].colList
     {
         for (int x = 0; x < cols; x++)
         {
-            for(int y = 0; y < containerList[x].colList.Count; y++)
+            for (int y = 0; y < containerList[x].colList.Count; y++)
             {
-                if(containerList[x].colList[y].GetComponent<SpriteRenderer>().sprite == null)
+                if (containerList[x].colList[y].GetComponent<SpriteRenderer>().sprite == null)
                 {
                     yield return StartCoroutine(ShiftTilesDown1(x, y));
                     break;
@@ -254,7 +228,7 @@ private void SetInitBoxes()
 
         int nullCount = 0;
 
-        for(int y = yStart; y < containerList[x].colList.Count ; y++) //ysize //
+        for (int y = yStart; y < containerList[x].colList.Count; y++) //ysize //
         {
             SpriteRenderer render = containerList[x].colList[y].GetComponent<SpriteRenderer>();
 
@@ -266,7 +240,7 @@ private void SetInitBoxes()
             //renders.Add(render);
         }
 
-        for(int y = yStart; y < containerList[x].colList.Count; y++)
+        for (int y = yStart; y < containerList[x].colList.Count; y++)
         {
             SpriteRenderer render = containerList[x].colList[y].GetComponent<SpriteRenderer>();
             renders.Add(render);
@@ -282,14 +256,20 @@ private void SetInitBoxes()
 
             for (int k = 0; k < renders.Count - 1; k++)
             {
-                if(renders[k]!= null && renders[k].GetComponent<SpriteRenderer>()!=null && renders[k+1] != null && renders[k+1].GetComponent<SpriteRenderer>() != null)
+                if (renders[k] != null && renders[k].GetComponent<SpriteRenderer>() != null && renders[k + 1] != null && renders[k + 1].GetComponent<SpriteRenderer>() != null)
                 {
                     renders[k].sprite = renders[k + 1].sprite;
                     renders[k + 1].sprite = emptySprite; //GetNewSprite(x, ySize - 1);
                 }
             }
+
+            if(i == nullCount-1)  //for last
+            {
+                checkIfAnyColEmpty();
+            }
         }
 
+        //Debug.Log("3");
         //IsShifting = false;
     }
 
@@ -302,7 +282,7 @@ private void SetInitBoxes()
         List<Sprite> possibleCharacters = new List<Sprite>();
         possibleCharacters.AddRange(characters);
 
-        for(int x = 0; x < cols; x++)
+        for (int x = 0; x < cols; x++)
         {
             Box newBox = Instantiate(tile, new Vector3(startX + (boxGap * x), startY, 0), tile.transform.rotation);
 
@@ -317,7 +297,7 @@ private void SetInitBoxes()
 
         AddNewBoxes(BoxesToSpawn);
 
-        for(int i = 0;i< BoxSpawner.transform.childCount;i++)
+        for (int i = 0; i < BoxSpawner.transform.childCount; i++)
         {
             GameObject.Destroy(BoxSpawner.transform.GetChild(i).gameObject);
         }
@@ -341,14 +321,14 @@ private void SetInitBoxes()
 
         boxesParent.transform.position = boxesParent.transform.position + new Vector3(0, boxGap, 0);
 
-        for(int j = 0; j < BoxesToSpawn.Count; j++)
+        for (int j = 0; j < BoxesToSpawn.Count; j++)
         {
             Box newTile = Instantiate(BoxesToSpawn[j], new Vector3(startX + (boxGap * j), startY, 0), tile.transform.rotation);
             newTile.GetComponent<BoxCollider2D>().enabled = true;
 
-            newTile.transform.parent = boxesParent.transform; // Add this line
+            newTile.transform.parent = containerList[j].transform; // Add this line
 
-            containerList[j].colList.Insert(0,newTile);
+            containerList[j].colList.Insert(0, newTile);
 
             if(containerList[j].colList.Count > boxYLimit)
             {
@@ -357,14 +337,68 @@ private void SetInitBoxes()
                     GameFinished(2);
                     return;
                 }
-                
+
                 GameObject.Destroy(containerList[j].colList[containerList[j].colList.Count - 1].gameObject);
                 containerList[j].colList.RemoveAt(containerList[j].colList.Count - 1);
-                
+
             }
 
         }
-        
+
+    }
+
+
+    public void checkIfAnyColEmpty()
+    {
+        float startX = transform.position.x;
+        List<int> emptyCols = new List<int>();
+
+        for (int i=0;i<containerList.Count;i++)
+        {
+            int count = 0;
+            for(int j = 0; j< containerList[i].colList.Count; j++)
+            {
+                Sprite sprite = containerList[i].colList[j].GetComponent<SpriteRenderer>().sprite;
+
+                if (sprite != null && !sprite.name.Equals("emptyPix"))
+                    break;
+
+                count++;
+
+                if(count == containerList[i].colList.Count)
+                    emptyCols.Add(i);
+            }
+        }
+
+        List<ColContainer> TempContainerList = new List<ColContainer>();
+        TempContainerList = containerList;
+
+        for (int i = 0; i< emptyCols.Count ;i++)
+        {
+            ColContainer temp = TempContainerList[emptyCols[i]];
+            containerList.RemoveAt(emptyCols[i]);
+
+            if(emptyCols[i] > cols/2)
+            {
+                containerList.Insert(cols-1, temp);
+            }
+            else
+                containerList.Insert(0, temp);
+        }
+
+        for(int i = 0; i < cols; i++)  //update position
+            containerList[i].transform.position = new Vector3(startX + (boxGap * i), boxesParent.transform.position.y);
+
+    }
+
+
+    public int points;
+    public void UpdateScore()
+    {
+        points++;
+
+        if (onScoreAdded != null)
+            onScoreAdded();
     }
 
     public void GameFinished(int gamefinish)

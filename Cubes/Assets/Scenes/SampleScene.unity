@@ -1771,6 +1771,7 @@ MonoBehaviour:
   boxSpawnTimeGap: 0.6
   nextBoxSetSpawnTimeGap: 1
   boxesParent: {fileID: 480486903}
+  columnPrefab: {fileID: -2259714198252042928, guid: c695a9ebf2fec4c3fa2df431dca06c88, type: 3}
   gameOver: 0
   points: 0
 --- !u!4 &1600811178
