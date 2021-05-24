@@ -1757,7 +1757,7 @@ MonoBehaviour:
   cols: 8
   boxGap: 0.55
   boxYLimit: 15
-  tile: {fileID: 7218564337638197027, guid: 3a92ee060507e46dbb83f2de86c47eaa, type: 3}
+  box: {fileID: 7218564337638197027, guid: 3a92ee060507e46dbb83f2de86c47eaa, type: 3}
   characters:
   - {fileID: 21300000, guid: 145f6bfebaa35481dad9d83b6cccd532, type: 3}
   - {fileID: 21300000, guid: a353765c2810c412182c844830c81b3f, type: 3}
@@ -1772,6 +1772,7 @@ MonoBehaviour:
   nextBoxSetSpawnTimeGap: 1
   boxesParent: {fileID: 480486903}
   columnPrefab: {fileID: -2259714198252042928, guid: c695a9ebf2fec4c3fa2df431dca06c88, type: 3}
+  containerList: []
   gameOver: 0
   points: 0
 --- !u!4 &1600811178
