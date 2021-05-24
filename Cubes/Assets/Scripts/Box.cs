@@ -30,7 +30,6 @@ public class Box : MonoBehaviour
 
 			return null;
 		}
-
 		return null;
 	}
 
@@ -50,7 +49,7 @@ public class Box : MonoBehaviour
 		return adjacentTiles;
 	}
 
-	void FindNeighbours()
+	private void FindNeighbours()
     {
 		List<GameObject> adjboxes = GetAllAdjacentBoxes();
 
@@ -96,8 +95,6 @@ public class Box : MonoBehaviour
 				BoxManager.instance.ClearBoxes();
 
 			}
-
-
 		}
 	}
 

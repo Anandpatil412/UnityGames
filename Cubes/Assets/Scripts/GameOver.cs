@@ -11,6 +11,7 @@ public class GameOver : MonoBehaviour
     {
         if(textUI == null)
             textUI = GetComponentInChildren<TextMeshProUGUI>();
+
         if(gameFinish == 1)
             textUI.SetText("Time Up! \n Your Score: " + BoxManager.instance.points);
         else

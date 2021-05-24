@@ -9,16 +9,7 @@ public class Score : MonoBehaviour
     private void Start()
     {
         textUI = GetComponentInChildren<TextMeshProUGUI>();
-    }
-
-    private void OnEnable()
-    {
-        BoxManager.onScoreAdded += UpdateScore;
-    }
-
-    private void OnDisable()
-    {
-        BoxManager.onScoreAdded -= UpdateScore;
+        BoxManager.instance.addScore += UpdateScore;
     }
 
     public void UpdateScore()
