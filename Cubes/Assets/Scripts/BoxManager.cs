@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class BoxManager : MonoBehaviour
 {
@@ -16,23 +17,23 @@ public class BoxManager : MonoBehaviour
     [SerializeField]
     private int boxYLimit = 15;
 
+    [SerializeField]
     private Box box;
 
-    public Box tile;
-    
-    private Box[,] tiles;
-    public List<Sprite> characters = new List<Sprite>();
-
+    [SerializeField]
+    private List<Sprite> characters = new List<Sprite>();
 
     [SerializeField]
     private List<Box> BoxesToClear = new List<Box>();
 
-    public GameObject emptyPrefab;
+    [SerializeField]
+    private GameObject emptyPrefab;
+
     private Sprite emptySprite;
 
-    public GameObject BoxSpawner;
-
     [SerializeField]
+    private GameObject BoxSpawner;
+
     private List<Box> BoxesToSpawn = new List<Box>();
 
     [SerializeField]
@@ -41,27 +42,26 @@ public class BoxManager : MonoBehaviour
     [SerializeField]
     private float nextBoxSetSpawnTimeGap = 1.5f;
 
-    public GameObject boxesParent;
+    [SerializeField]
+    private GameObject boxesParent;
 
-    public ColContainer columnPrefab;
+    [SerializeField]
+    private ColContainer columnPrefab;
 
-    //public class ColContainer
-    //{
-        
-    //}
-
-    public List<ColContainer> containerList = new List<ColContainer>();
+    private List<ColContainer> containerList = new List<ColContainer>();
 
     public bool gameOver;
-
-    public delegate void ScoreAddedAction();
-    public static event ScoreAddedAction onScoreAdded;
-
     private bool moreThan2Cluster = false;
+
+    public event Action addScore;
+
+    private void Awake()
+    {
+        instance = GetComponent<BoxManager>();
+    }
 
     private void Start()
     {
-        instance = GetComponent<BoxManager>();
         emptySprite = emptyPrefab.GetComponent<SpriteRenderer>().sprite;
 
         SetInitBoxes();
@@ -123,7 +123,7 @@ public class BoxManager : MonoBehaviour
         possibleCharacters.AddRange(characters);
 
         noOfLevels = level.Length;
-        int levelIndex = Random.Range(0, noOfLevels);
+        int levelIndex = UnityEngine.Random.Range(0, noOfLevels);
 
         for (int i = 0; i < cols; i++)
         {
@@ -137,7 +137,7 @@ public class BoxManager : MonoBehaviour
 
             for (int j = 0; j < level[levelIndex][i].Length; j++)
             {
-                Box newTile = Instantiate(tile, new Vector3(colObj.transform.position.x, startY + (boxGap * j), 0), tile.transform.rotation);
+                Box newTile = Instantiate(box, new Vector3(colObj.transform.position.x, startY + (boxGap * j), 0), box.transform.rotation);
                 newTile.GetComponent<BoxCollider2D>().enabled = true;
 
                 newTile.transform.parent = colObj.transform;
@@ -175,7 +175,7 @@ public class BoxManager : MonoBehaviour
 
                 BoxesToClear.Clear();
 
-                StartCoroutine(FindNullTiles1()); //Add this line
+                StartCoroutine(FindNullBoxes()); //Add this line
             }
             else
             {
@@ -197,14 +197,14 @@ public class BoxManager : MonoBehaviour
             BoxesToClear.Clear();
 
             //Debug.Log("1");
-            StartCoroutine(FindNullTiles1()); //Add this line
+            StartCoroutine(FindNullBoxes()); //Add this line
         }
 
         //Debug.Log("2");
         //checkIfAnyColEmpty();
     }
 
-    public IEnumerator FindNullTiles1()    //containerList[j].colList
+    public IEnumerator FindNullBoxes()    //containerList[j].colList
     {
         for (int x = 0; x < cols; x++)
         {
@@ -212,7 +212,7 @@ public class BoxManager : MonoBehaviour
             {
                 if (containerList[x].colList[y].GetComponent<SpriteRenderer>().sprite == null)
                 {
-                    yield return StartCoroutine(ShiftTilesDown1(x, y));
+                    yield return StartCoroutine(ShiftBoxesDown(x, y));
                     break;
                 }
             }
@@ -220,7 +220,7 @@ public class BoxManager : MonoBehaviour
 
     }
 
-    private IEnumerator ShiftTilesDown1(int x, int yStart, float shiftDelay = 0.05f)
+    private IEnumerator ShiftBoxesDown(int x, int yStart, float shiftDelay = 0.05f)
     {
         //IsShifting = true;
 
@@ -284,9 +284,9 @@ public class BoxManager : MonoBehaviour
 
         for (int x = 0; x < cols; x++)
         {
-            Box newBox = Instantiate(tile, new Vector3(startX + (boxGap * x), startY, 0), tile.transform.rotation);
+            Box newBox = Instantiate(box, new Vector3(startX + (boxGap * x), startY, 0), box.transform.rotation);
 
-            Sprite newBoxprite = possibleCharacters[Random.Range(0, possibleCharacters.Count)];
+            Sprite newBoxprite = possibleCharacters[UnityEngine.Random.Range(0, possibleCharacters.Count)];
             newBox.GetComponent<SpriteRenderer>().sprite = newBoxprite;
 
             BoxesToSpawn.Add(newBox);
@@ -323,7 +323,7 @@ public class BoxManager : MonoBehaviour
 
         for (int j = 0; j < BoxesToSpawn.Count; j++)
         {
-            Box newTile = Instantiate(BoxesToSpawn[j], new Vector3(startX + (boxGap * j), startY, 0), tile.transform.rotation);
+            Box newTile = Instantiate(BoxesToSpawn[j], new Vector3(startX + (boxGap * j), startY, 0), box.transform.rotation);
             newTile.GetComponent<BoxCollider2D>().enabled = true;
 
             newTile.transform.parent = containerList[j].transform; // Add this line
@@ -396,9 +396,7 @@ public class BoxManager : MonoBehaviour
     public void UpdateScore()
     {
         points++;
-
-        if (onScoreAdded != null)
-            onScoreAdded();
+        addScore?.Invoke();
     }
 
     public void GameFinished(int gamefinish)
