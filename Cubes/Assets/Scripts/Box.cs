@@ -64,7 +64,7 @@ public class Box : MonoBehaviour
 		}
 	}
 
-	
+	bool bounce;
 	void OnMouseDown()
 	{
 		if (BoxManager.instance.gameOver) return;
@@ -77,8 +77,19 @@ public class Box : MonoBehaviour
 			boxState = 1;
 			BoxManager.instance.UpdateBoxesToClear(this);
 		}
+        else
+        {
+            Debug.Log("Single click negative");
+			if(!bounce)
+			{
+				BoxManager.instance.UpdateScore(false,1);   //negative points
 
-		foreach (GameObject obj in adjboxes)
+				bounce = true;
+				StartCoroutine(Bounce());
+			}
+		}
+
+        foreach (GameObject obj in adjboxes)
         {
 			Box box = obj.GetComponent<Box>();
 
@@ -96,6 +107,19 @@ public class Box : MonoBehaviour
 
 			}
 		}
+	}
+
+	IEnumerator Bounce()
+	{
+		Vector3 orgScale = transform.localScale;
+		transform.localScale = orgScale + new Vector3(0.01f, 0, 0);
+		yield return new WaitForSeconds(0.05f);
+
+		transform.localScale = orgScale + new Vector3(0, 0.01f, 0);
+		yield return new WaitForSeconds(0.05f);
+
+		transform.localScale = orgScale;
+		bounce = false;
 	}
 
 }

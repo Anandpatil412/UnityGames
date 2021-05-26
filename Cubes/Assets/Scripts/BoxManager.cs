@@ -158,13 +158,15 @@ public class BoxManager : MonoBehaviour
     {
         if (!BoxesToClear.Contains(box))
         {
-            UpdateScore();
+            //UpdateScore(true);
             BoxesToClear.Add(box);
         }
     }
 
     public void ClearBoxes()
     {
+        int boxesBursted = BoxesToClear.Count;
+
         if(moreThan2Cluster)
         {
             if(BoxesToClear.Count > 2)
@@ -185,6 +187,8 @@ public class BoxManager : MonoBehaviour
                     box.boxState = 0;
 
                 BoxesToClear.Clear();
+
+                //Debug.Log("Double click negative");
             }
         }
         else
@@ -199,7 +203,10 @@ public class BoxManager : MonoBehaviour
 
             //Debug.Log("1");
             StartCoroutine(FindNullBoxes()); //Add this line
+            
         }
+
+        UpdateScore(true, boxesBursted);
 
         //Debug.Log("2");
         //checkIfAnyColEmpty();
@@ -214,6 +221,7 @@ public class BoxManager : MonoBehaviour
                 if (containerList[x].colList[y].GetComponent<SpriteRenderer>().sprite == null)
                 {
                     yield return StartCoroutine(ShiftBoxesDown(x, y));
+
                     break;
                 }
             }
@@ -264,7 +272,7 @@ public class BoxManager : MonoBehaviour
                 }
             }
 
-            if(i == nullCount-1)  //for last
+            if (i == nullCount - 1)  //for last
             {
                 checkIfAnyColEmpty();
             }
@@ -308,6 +316,7 @@ public class BoxManager : MonoBehaviour
         yield return new WaitForSeconds(nextBoxSetSpawnTimeGap);
 
         StopCoroutine(SetNewBoxes()); ///
+
         StartCoroutine(SetNewBoxes());
 
     }
@@ -376,7 +385,7 @@ public class BoxManager : MonoBehaviour
 
         for (int i = 0; i< emptyCols.Count ;i++)
         {
-            ColContainer temp = TempContainerList[emptyCols[i]];
+            ColContainer temp = containerList[emptyCols[i]];
             containerList.RemoveAt(emptyCols[i]);
 
             if(emptyCols[i] > cols/2)
@@ -392,10 +401,20 @@ public class BoxManager : MonoBehaviour
 
     }
 
-    public void UpdateScore()
+    //2  = 2
+    //3 = 3 * 2 = 6
+    //4 = 4 * 3 = 12
+    //5 = 5 * 4 = 20
+    //6 = 6 * 5 = 30
+
+    public void UpdateScore(bool increaseScore, int boxCount)
     {
-        points++;
-        addScore?.Invoke(points);
+        if (increaseScore)  //increasing
+            points = points + (boxCount * (boxCount - 1));
+        else
+            points = points - 2; //decreasing
+
+       addScore?.Invoke(points);
     }
 
     public void GameFinished(int gamefinish)
