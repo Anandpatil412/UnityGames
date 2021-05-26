@@ -53,7 +53,9 @@ public class BoxManager : MonoBehaviour
     public bool gameOver;
     private bool moreThan2Cluster = false;
 
-    public event Action addScore;
+    public event Action<int> addScore;
+
+    public int points { get; private set; }
 
     private void Awake()
     {
@@ -163,7 +165,7 @@ public class BoxManager : MonoBehaviour
 
     public void ClearBoxes()
     {
-        if (moreThan2Cluster)
+        if(moreThan2Cluster)
         {
             if(BoxesToClear.Count > 2)
             {
@@ -184,7 +186,6 @@ public class BoxManager : MonoBehaviour
 
                 BoxesToClear.Clear();
             }
-
         }
         else
         {
@@ -391,12 +392,10 @@ public class BoxManager : MonoBehaviour
 
     }
 
-
-    public int points;
     public void UpdateScore()
     {
         points++;
-        addScore?.Invoke();
+        addScore?.Invoke(points);
     }
 
     public void GameFinished(int gamefinish)
@@ -411,7 +410,7 @@ public class BoxManager : MonoBehaviour
             gameOverObj.transform.GetChild(i).gameObject.SetActive(true);
         }
 
-        gameOverObj.GetComponent<GameOver>().InitGameOver(gamefinish);
+        gameOverObj.GetComponent<GameOver>().InitGameOver(gamefinish,points);
     }
 
     private void Reset()

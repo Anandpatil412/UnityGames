@@ -6,14 +6,15 @@ using TMPro;
 public class Score : MonoBehaviour
 {
     TextMeshProUGUI textUI;
+
     private void Start()
     {
         textUI = GetComponentInChildren<TextMeshProUGUI>();
         BoxManager.instance.addScore += UpdateScore;
     }
 
-    public void UpdateScore()
+    public void UpdateScore(int points)
     {
-        textUI.SetText("Score: "+BoxManager.instance.points);
+        textUI.SetText("Score: "+points);
     }
 }

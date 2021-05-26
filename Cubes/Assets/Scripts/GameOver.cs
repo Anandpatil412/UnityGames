@@ -7,15 +7,15 @@ public class GameOver : MonoBehaviour
 {
     TextMeshProUGUI textUI;
 
-    public void InitGameOver(int gameFinish)
+    public void InitGameOver(int gameFinish,int points)
     {
         if(textUI == null)
             textUI = GetComponentInChildren<TextMeshProUGUI>();
 
         if(gameFinish == 1)
-            textUI.SetText("Time Up! \n Your Score: " + BoxManager.instance.points);
+            textUI.SetText("Time Up! \n Your Score: " + points);
         else
-            textUI.SetText("Your Score: " + BoxManager.instance.points);
+            textUI.SetText("Your Score: " + points);
 
     }
 }
