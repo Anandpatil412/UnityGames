@@ -686,7 +686,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.078431375, g: 0.08235294, b: 0.09411766, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1767,14 +1767,11 @@ MonoBehaviour:
   BoxesToClear: []
   emptyPrefab: {fileID: 2459573046714810383, guid: 1889a24ca6498492cb53a385e4fab7e8, type: 3}
   BoxSpawner: {fileID: 1843098797}
-  BoxesToSpawn: []
   boxSpawnTimeGap: 0.6
   nextBoxSetSpawnTimeGap: 1
   boxesParent: {fileID: 480486903}
   columnPrefab: {fileID: -2259714198252042928, guid: c695a9ebf2fec4c3fa2df431dca06c88, type: 3}
-  containerList: []
   gameOver: 0
-  points: 0
 --- !u!4 &1600811178
 Transform:
   m_ObjectHideFlags: 0
@@ -2060,7 +2057,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1854538127
 MonoBehaviour:
   m_ObjectHideFlags: 0
