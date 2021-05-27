@@ -57,6 +57,9 @@ public class BoxManager : MonoBehaviour
 
     public int points { get; private set; }
 
+    [SerializeField]
+    private FloatingScore floatingScorePrefab;
+
     private void Awake()
     {
         instance = GetComponent<BoxManager>();
@@ -166,8 +169,9 @@ public class BoxManager : MonoBehaviour
     public void ClearBoxes()
     {
         int boxesBursted = BoxesToClear.Count;
+        Box b = BoxesToClear[0];
 
-        if(moreThan2Cluster)
+        if (moreThan2Cluster)
         {
             if(BoxesToClear.Count > 2)
             {
@@ -206,7 +210,7 @@ public class BoxManager : MonoBehaviour
             
         }
 
-        UpdateScore(true, boxesBursted);
+        UpdateScore(true, boxesBursted,b);
 
         //Debug.Log("2");
         //checkIfAnyColEmpty();
@@ -363,7 +367,7 @@ public class BoxManager : MonoBehaviour
         float startX = transform.position.x;
         List<int> emptyCols = new List<int>();
 
-        for (int i=0;i<containerList.Count;i++)
+        for (int i=0; i<containerList.Count; i++)
         {
             int count = 0;
             for(int j = 0; j< containerList[i].colList.Count; j++)
@@ -407,14 +411,30 @@ public class BoxManager : MonoBehaviour
     //5 = 5 * 4 = 20
     //6 = 6 * 5 = 30
 
-    public void UpdateScore(bool increaseScore, int boxCount)
+    public void UpdateScore(bool increaseScore, int boxCount,Box box = null)
     {
-        if (increaseScore)  //increasing
-            points = points + (boxCount * (boxCount - 1));
+        int newpoints = 0;
+        if(increaseScore)  //increasing
+        {
+            newpoints = (boxCount * (boxCount - 1));
+            points = points + newpoints;
+        }
         else
             points = points - 2; //decreasing
 
-       addScore?.Invoke(points);
+        FloatingScore floatingScore = null;
+
+        if (increaseScore && box != null)
+        {
+            floatingScore = Instantiate(floatingScorePrefab);
+            floatingScore.transform.parent = box.transform;
+            floatingScore.transform.localPosition = new Vector3(0, 0, 0);
+
+            floatingScore.newPoints = newpoints;
+            floatingScore.UpdateFloatingScore(floatingScore.newPoints);
+        }
+
+        addScore?.Invoke(points);
     }
 
     public void GameFinished(int gamefinish)

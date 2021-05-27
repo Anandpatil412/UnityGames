@@ -1772,6 +1772,7 @@ MonoBehaviour:
   boxesParent: {fileID: 480486903}
   columnPrefab: {fileID: -2259714198252042928, guid: c695a9ebf2fec4c3fa2df431dca06c88, type: 3}
   gameOver: 0
+  floatingScorePrefab: {fileID: 731191077, guid: f66391f55195e44c29d550810240dafc, type: 3}
 --- !u!4 &1600811178
 Transform:
   m_ObjectHideFlags: 0
