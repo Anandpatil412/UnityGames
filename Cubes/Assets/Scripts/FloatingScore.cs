@@ -12,6 +12,11 @@ public class FloatingScore : MonoBehaviour
     {
         text = GetComponent<TextMeshPro>();
         StartCoroutine(SelfDestruct());
+
+        start = GetComponent<Transform>();
+        end = GetComponent<Transform>();
+
+        end.position = new Vector3(start.position.x, start.position.y, start.position.z);
     }
 
     public void UpdateFloatingScore(int newPoints)
@@ -21,23 +26,23 @@ public class FloatingScore : MonoBehaviour
 
     IEnumerator SelfDestruct()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1f);
         Destroy(gameObject);
     }
 
 
-    //float timeElapsed;
-    //float lerpDuration = 3;
+    float timeElapsed;
+    float lerpDuration = 10f;
+    Transform start;
+    Transform end;
+    float lerptime = 10f;
 
-    //float valueToLerp;
+    float valueToLerp;
 
-    //void Update()
-    //{
-    //    if(timeElapsed < lerpDuration)
-    //    {
-    //         = Mathf.Lerp(transform.position.y, transform.position.y + 1, timeElapsed / lerpDuration);
-    //        timeElapsed += Time.deltaTime;
-    //    }
-    //}
+    void Update()
+    {
+        transform.position = Vector3.Lerp(transform.position, end.position + new Vector3(0,0.2f,0), lerptime * Time.deltaTime);
+        transform.localScale -= new Vector3(0.02f, 0.02f, 0.2f);
+    }
 
 }
