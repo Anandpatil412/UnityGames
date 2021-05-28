@@ -7,6 +7,7 @@ public class Timer : MonoBehaviour
 {
     public float timeValue = 120f;
     TextMeshProUGUI textTimerUI;
+    private bool startTimeDown;
 
     void Start()
     {
@@ -26,6 +27,12 @@ public class Timer : MonoBehaviour
             timeValue = 0f;
         }
 
+        if(timeValue <= 10 && !startTimeDown)
+        {
+            startTimeDown = true;
+            SoundManager.PlayLoopSound(SoundManager.Sound.Timeout);
+        }
+
         DisplayTime(timeValue);
     }
 
@@ -34,6 +41,7 @@ public class Timer : MonoBehaviour
         if(timeToDisplay < 0)
         {
             timeToDisplay = 0;
+
             BoxManager.instance.GameFinished(1);
         }
 

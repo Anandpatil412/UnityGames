@@ -29,7 +29,7 @@ public class BoxManager : MonoBehaviour
     [SerializeField]
     private GameObject emptyPrefab;
 
-    private Sprite emptySprite;
+    public Sprite emptySprite { get; private set; }
 
     [SerializeField]
     private GameObject BoxSpawner;
@@ -70,6 +70,9 @@ public class BoxManager : MonoBehaviour
         emptySprite = emptyPrefab.GetComponent<SpriteRenderer>().sprite;
 
         SetInitBoxes();
+
+        SoundManager.PlayLoopSound(SoundManager.Sound.GameBG);
+
         StartCoroutine(SetNewBoxes());
     }
 
@@ -81,12 +84,12 @@ public class BoxManager : MonoBehaviour
                             {
                                   new int[]{ 0, 1, 1, 1, 1},
                                   new int[]{ 2, 2, 1, 3},
-                                  new int[]{ 3, 0, 0, 1, 3,0, 3, 1, 1, 1, 2},
-                                  new int[]{ 0, 4, 1, 1, 1},
+                                  new int[]{ 3, 0, 0, 1, 3,0, 3, 1, 1, 1, 2},    //0,1,2,3,4,5
+                                  new int[]{ 0, 4, 5, 1, 1},
                                   new int[]{ 0, 1, 1, 1, 1,1, 2, 0, 3},
                                   new int[]{ 0, 3, 2, 1, 3, 2},
-                                  new int[]{ 0, 1, 4, 1, 1,3, 0, 4, 1, 3},
-                                  new int[]{ 3, 0, 0, 1, 3, 0, 2, 3, 2},
+                                  new int[]{ 0, 5, 4, 5, 1,3, 0, 4, 1, 3},
+                                  new int[]{ 3, 0, 0, 5, 3, 0, 2, 3, 2},
                                   new int[]{ 1, 3, 0, 1, 3, 2}
                             },
 
@@ -94,26 +97,26 @@ public class BoxManager : MonoBehaviour
                             {
                                   new int[]{ 0, 1, 1, 1, 1},
                                   new int[] { 2, 2, 1, 3 },
-                                  new int[] { 4, 0, 3, 1, 3, 0, 3, 1},
-                                  new int[] { 0, 1, 2, 1 },
+                                  new int[] { 4, 0, 3, 4,},          ////0,1,2,3,4,5,6
+                                  new int[] { 0, 5, 2, 1 },
                                   new int[] { 0, 4, 1, 3},
-                                  new int[] { 0, 3, 1, 1, 3, 2 },
-                                  new int[] { 0, 1, 1, 2, 1, 3, 0, 0, 1, 3 },
-                                  new int[] { 3, 0, 0, 1, 2 },
+                                  new int[] { 0, 3, 1, 1, 6, 2, 5,4 },
+                                  new int[] { 0, 1, 5, 2, 1},
+                                  new int[] { 3, 6, 0, 1, 2 },
                                   new int[] { 1, 3, 2, 1, 3, 2 }
                             },
 
                      new int[][]
                             {
-                                  new int[] { 0, 1, 1, 3, 3 },
-                                  new int[] { 2, 2, 1, 3 },
+                                  new int[] { 0, 1, 1, 3, 3 }, 
+                                  new int[] { 0, 1, 2, 4, 1, 7, 2, 0, 3 },  ////0,1,2,3,4,5,6,7
                                   new int[] { 3, 0, 0, 1, 2, 1, 1, 2 },
-                                  new int[] { 0, 1, 4, 0, 1 },
-                                  new int[] { 0, 1, 2, 1, 1, 1, 2, 0, 3 },
+                                  new int[] { 0, 7, 4, 0, 1 },
+                                  new int[] { 0, 5, 4, 0, 1, 5},
                                   new int[] { 0, 3, 2, 1, 3, 2 },
-                                  new int[] { 0, 4, 3,2 },
+                                  new int[] { 0, 4, 3, 6},
                                   new int[] { 3, 0, 0, 1, 1, 0, 2},
-                                  new int[] { 1, 3, 0, 1, 4, 2}
+                                  new int[] { 1, 3, 5, 1, 4, 2}
                             }
 
                     };
@@ -166,7 +169,7 @@ public class BoxManager : MonoBehaviour
         }
     }
 
-    public void ClearBoxes()
+    public IEnumerator ClearBoxes()
     {
         int boxesBursted = BoxesToClear.Count;
         Box b = BoxesToClear[0];
@@ -181,6 +184,7 @@ public class BoxManager : MonoBehaviour
                     box.boxState = 0;
                 }
 
+                SoundManager.PlaySound(SoundManager.Sound.Burst);
                 BoxesToClear.Clear();
 
                 StartCoroutine(FindNullBoxes()); //Add this line
@@ -190,6 +194,7 @@ public class BoxManager : MonoBehaviour
                 foreach (Box box in BoxesToClear)
                     box.boxState = 0;
 
+                SoundManager.PlaySound(SoundManager.Sound.WrongMove);
                 BoxesToClear.Clear();
 
                 //Debug.Log("Double click negative");
@@ -201,8 +206,13 @@ public class BoxManager : MonoBehaviour
             {
                 box.GetComponent<SpriteRenderer>().sprite = null;
                 box.boxState = 0;
+
+                BreakBox(box);
+                
+                yield return new WaitForSeconds(0.02f);
             }
 
+            SoundManager.PlaySound(SoundManager.Sound.Burst);
             BoxesToClear.Clear();
 
             //Debug.Log("1");
@@ -214,6 +224,17 @@ public class BoxManager : MonoBehaviour
 
         //Debug.Log("2");
         //checkIfAnyColEmpty();
+    }
+
+    private void BreakBox(Box box)
+    {
+        ParticleSystem particle = Instantiate(box.particles);
+
+        particle.transform.parent = box.transform;
+        particle.transform.localPosition = new Vector3(0, 0, -1);
+        particle.transform.localScale = new Vector3(1, 1, 1);
+
+        particle.Play();
     }
 
     public IEnumerator FindNullBoxes()    //containerList[j].colList
@@ -276,7 +297,7 @@ public class BoxManager : MonoBehaviour
                 }
             }
 
-            if (i == nullCount - 1)  //for last
+            if(i == nullCount - 1)  //for last
             {
                 checkIfAnyColEmpty();
             }
@@ -299,7 +320,7 @@ public class BoxManager : MonoBehaviour
         {
             Box newBox = Instantiate(box, new Vector3(startX + (boxGap * x), startY, 0), box.transform.rotation);
 
-            Sprite newBoxprite = possibleCharacters[UnityEngine.Random.Range(0, possibleCharacters.Count)];
+            Sprite newBoxprite = possibleCharacters[UnityEngine.Random.Range(0, /*possibleCharacters.Count*/(7+1))]; //cheat
             newBox.GetComponent<SpriteRenderer>().sprite = newBoxprite;
 
             BoxesToSpawn.Add(newBox);
@@ -439,6 +460,8 @@ public class BoxManager : MonoBehaviour
 
     public void GameFinished(int gamefinish)
     {
+        SoundManager.StopLoopSound();
+
         gameOver = true;
         StopAllCoroutines();
 

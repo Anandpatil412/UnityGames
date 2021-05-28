@@ -7,6 +7,8 @@ public class Box : MonoBehaviour
 {
 	private Vector2[] adjacentDirections = new Vector2[] { Vector2.up, Vector2.down, Vector2.left, Vector2.right };
 	public int boxState;
+	public ParticleSystem particles;
+
 
 	private GameObject GetAdjacent(Vector2 castDir)
 	{
@@ -17,7 +19,8 @@ public class Box : MonoBehaviour
 			Sprite a = hit.collider.gameObject.GetComponent<SpriteRenderer>().sprite;
 			Sprite b = gameObject.GetComponent<SpriteRenderer>().sprite;
 
-			if(a!=null && b!= null && a == b) //Sprite compare
+
+			if(a!= null && b!= null && a == b) //Sprite compare
 			{
 				GameObject obj = hit.collider.gameObject;
 				Box box = obj.GetComponent<Box>();
@@ -67,6 +70,8 @@ public class Box : MonoBehaviour
 	bool bounce;
 	void OnMouseDown()
 	{
+		if (gameObject.GetComponent<SpriteRenderer>().sprite == BoxManager.instance.emptySprite) return;
+
 		if (BoxManager.instance.gameOver) return;
 
 		List<GameObject> adjboxes = GetAllAdjacentBoxes();
@@ -80,7 +85,9 @@ public class Box : MonoBehaviour
         else
         {
             Debug.Log("Single click negative");
-			if(!bounce)
+			SoundManager.PlaySound(SoundManager.Sound.WrongMove);
+
+			if (!bounce)
 			{
 				BoxManager.instance.UpdateScore(false,1);   //negative points
 
@@ -103,7 +110,7 @@ public class Box : MonoBehaviour
 			if(count == adjboxes.Count) //Last.. ready to clear boxes
             {
 				//Debug.Log(" Last ");
-				BoxManager.instance.ClearBoxes();
+				StartCoroutine(BoxManager.instance.ClearBoxes());
 
 			}
 		}
