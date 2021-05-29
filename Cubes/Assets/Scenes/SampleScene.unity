@@ -556,7 +556,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 1
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -821,7 +821,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
+  m_BackGroundColor: {r: 0.8663506, g: 0.9433962, b: 0.56514776, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1037,8 +1037,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.0000076293945}
-  m_SizeDelta: {x: 2000, y: 300}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 2000, y: 360}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &755052991
 MonoBehaviour:
@@ -1493,8 +1493,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -3.9, y: 232.7}
-  m_SizeDelta: {x: 326.4, y: 242.8}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &943728744
 MonoBehaviour:
@@ -2102,13 +2102,13 @@ MonoBehaviour:
   BoxesToClear: []
   emptyPrefab: {fileID: 2459573046714810383, guid: 1889a24ca6498492cb53a385e4fab7e8, type: 3}
   BoxSpawner: {fileID: 1843098797}
-  boxSpawnTimeGap: 0.6
-  nextBoxSetSpawnTimeGap: 1
+  boxSpawnTimeGap: 0.5
+  nextBoxSetSpawnTimeGap: 0.8
   boxesParent: {fileID: 480486903}
   columnPrefab: {fileID: -2259714198252042928, guid: c695a9ebf2fec4c3fa2df431dca06c88, type: 3}
   gameOver: 0
   floatingScorePrefab: {fileID: 731191077, guid: f66391f55195e44c29d550810240dafc, type: 3}
-  goodTextShowCount: 4
+  goodTextShowCount: 5
 --- !u!4 &1600811178
 Transform:
   m_ObjectHideFlags: 0

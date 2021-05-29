@@ -13,13 +13,6 @@ public class FloatingScore : MonoBehaviour
     private void Awake()
     {
         text = GetComponent<TextMeshPro>();
-        //StartCoroutine(SelfDestruct());
-
-        //start = GetComponent<Transform>();
-        //end = GetComponent<Transform>();
-
-        //end.position = new Vector3(start.position.x, start.position.y, start.position.z);
-
         StartCoroutine(Fade());
     }
 
@@ -46,8 +39,6 @@ public class FloatingScore : MonoBehaviour
 
     void Update()
     {
-        //transform.position = Vector3.Lerp(transform.position, end.position + new Vector3(0,0.2f,0), lerptime * Time.deltaTime);
-        //transform.localScale -= new Vector3(0.02f, 0.02f, 0.2f);
         this.transform.Translate(Vector3.up * Time.deltaTime * speed);
     }
 
