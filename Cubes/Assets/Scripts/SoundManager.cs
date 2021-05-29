@@ -15,7 +15,8 @@ public static class SoundManager
         GameBG,
         Timeout,
         Burst,
-        WrongMove
+        WrongMove,
+        Die
     }
 
     public static void PlaySound(Sound sound)

@@ -60,6 +60,11 @@ public class BoxManager : MonoBehaviour
     [SerializeField]
     private FloatingScore floatingScorePrefab;
 
+    public event Action showGoodText;
+
+    [SerializeField]
+    private int goodTextShowCount = 4;
+
     private void Awake()
     {
         instance = GetComponent<BoxManager>();
@@ -458,11 +463,17 @@ public class BoxManager : MonoBehaviour
         if(points < 0) points = 0;
 
         addScore?.Invoke(points);
+
+        if(boxCount >= goodTextShowCount)
+            showGoodText?.Invoke();
     }
 
     public void GameFinished(int gamefinish)
     {
         SoundManager.StopLoopSound();
+
+        if (gamefinish == 2)
+            SoundManager.PlaySound(SoundManager.Sound.Die);
 
         gameOver = true;
         StopAllCoroutines();
