@@ -455,6 +455,8 @@ public class BoxManager : MonoBehaviour
             floatingScore.UpdateFloatingScore(floatingScore.newPoints);
         }
 
+        if(points < 0) points = 0;
+
         addScore?.Invoke(points);
     }
 
