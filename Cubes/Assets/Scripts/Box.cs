@@ -89,7 +89,7 @@ public class Box : MonoBehaviour
 
 			if (!bounce)
 			{
-				BoxManager.instance.UpdateScore(false,1);   //negative points
+				BoxManager.instance.UpdateScore(false,1,this);   //negative points
 
 				bounce = true;
 				StartCoroutine(Bounce());

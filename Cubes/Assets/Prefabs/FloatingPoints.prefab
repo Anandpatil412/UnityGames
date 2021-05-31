@@ -186,3 +186,5 @@ MonoBehaviour:
   newPoints: 0
   fadeDuration: 2
   speed: 2
+  increaseScoreColor: {r: 0.35536385, g: 1, b: 0, a: 1}
+  decreaseScoreColor: {r: 1, g: 0, b: 0, a: 1}

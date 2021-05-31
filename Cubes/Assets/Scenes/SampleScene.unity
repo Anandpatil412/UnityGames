@@ -2087,18 +2087,18 @@ MonoBehaviour:
   boxYLimit: 15
   box: {fileID: 7218564337638197027, guid: 3a92ee060507e46dbb83f2de86c47eaa, type: 3}
   characters:
-  - {fileID: 21300000, guid: 58affdd90d89341a2bffac80a882df8a, type: 3}
+  - {fileID: 21300000, guid: 4f3d102b0f9da4758a8107a339eff39a, type: 3}
   - {fileID: 21300000, guid: 6dc9a993a570747979f2ff8236c0ece8, type: 3}
   - {fileID: 21300000, guid: d1d18f6c8297249928141fe02e62d2f1, type: 3}
   - {fileID: 21300000, guid: f267c9af8d01e4194887dcdf841a452f, type: 3}
   - {fileID: 21300000, guid: dd91cf2e22ce346e7bc9b38d46c0a403, type: 3}
-  - {fileID: 21300000, guid: 4f3d102b0f9da4758a8107a339eff39a, type: 3}
+  - {fileID: 21300000, guid: 58affdd90d89341a2bffac80a882df8a, type: 3}
   - {fileID: 21300000, guid: c4afd76a77cdf42d88b01f2c72357dbe, type: 3}
   - {fileID: 21300000, guid: f6d7b852988e54c66b4188addebfd18d, type: 3}
   - {fileID: 21300000, guid: 068c0f7db2f2b4510aca5eb3de1a3e29, type: 3}
   - {fileID: 21300000, guid: b31dc4466ea7d433c9d966999fde54ea, type: 3}
+  - {fileID: 21300000, guid: 9396a3d48e81645bdae4d190caf44c65, type: 3}
   - {fileID: 21300000, guid: 77a1a5f69d4544f9db5e74b0e482bd5b, type: 3}
-  - {fileID: 21300000, guid: b31dc4466ea7d433c9d966999fde54ea, type: 3}
   BoxesToClear: []
   emptyPrefab: {fileID: 2459573046714810383, guid: 1889a24ca6498492cb53a385e4fab7e8, type: 3}
   BoxSpawner: {fileID: 1843098797}
@@ -2108,6 +2108,7 @@ MonoBehaviour:
   columnPrefab: {fileID: -2259714198252042928, guid: c695a9ebf2fec4c3fa2df431dca06c88, type: 3}
   gameOver: 0
   floatingScorePrefab: {fileID: 731191077, guid: f66391f55195e44c29d550810240dafc, type: 3}
+  decreasingOnWrongMove: 2
   goodTextShowCount: 5
 --- !u!4 &1600811178
 Transform:

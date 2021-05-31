@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using TMPro;
 
 public class BoxManager : MonoBehaviour
 {
@@ -57,13 +58,16 @@ public class BoxManager : MonoBehaviour
 
     public int points { get; private set; }
 
+    [Header("Floating Score")]
     [SerializeField]
     private FloatingScore floatingScorePrefab;
+    [SerializeField]
+    private int decreasingOnWrongMove = 2;
 
-    public event Action showGoodText;
-
+    [Header("Good Text")]
     [SerializeField]
     private int goodTextShowCount = 5;
+    public event Action showGoodText;
 
     private void Awake()
     {
@@ -122,6 +126,19 @@ public class BoxManager : MonoBehaviour
                                   new int[] { 10, 5, 8, 6},
                                   new int[] { 3, 5, 5, 6, 5, 7, 10},
                                   new int[] { 7, 6, 5, 6, 7, 7}
+                            },
+
+                     new int[][]
+                            {
+                                  new int[] { 11, 11, 6, 7, 7 },
+                                  new int[] { 10, 6, 10, 6, 7 },  ////6,7,8,9,10,11
+                                  new int[] { 10, 9, 9, 7, 6, 6 },
+                                  new int[] { 9, 7},
+                                  new int[] { 9, 11, 11, 10},
+                                  new int[] { 9, 6, 8, 7, 8, 7 },
+                                  new int[] { 10, 6, 8, 6},
+                                  new int[] { 6, 6, 8, 6, 11,10},
+                                  new int[] { 9, 6, 7, 7}
                             }
 
                     };
@@ -132,6 +149,7 @@ public class BoxManager : MonoBehaviour
                                         new int[] { 0, 1, 2, 3, 4, 5 },
                                         new int[] { 3, 4, 5, 6, 7, 8 },
                                         new int[] { 5, 6, 7, 8, 9, 10 },
+                                        new int[] { 6, 7, 8, 9, 10, 11}
                                     };
 
     private int levelIndex;
@@ -460,21 +478,25 @@ public class BoxManager : MonoBehaviour
             points = points + newpoints;
         }
         else
-            points = points - 2; //decreasing
+            points = points - decreasingOnWrongMove; //decreasing
 
         FloatingScore floatingScore = null;
 
-        if (increaseScore && box != null)
+        if (box != null)  //increase
         {
             floatingScore = Instantiate(floatingScorePrefab);
             floatingScore.transform.parent = box.transform;
             floatingScore.transform.localPosition = new Vector3(0, 0, 0);
 
-            floatingScore.newPoints = newpoints;
-            floatingScore.UpdateFloatingScore(floatingScore.newPoints);
+            if(increaseScore)
+                floatingScore.newPoints = newpoints;
+            else
+                floatingScore.newPoints = decreasingOnWrongMove;
         }
 
-        if(points < 0) points = 0;
+        floatingScore.UpdateFloatingScore(floatingScore.newPoints, increaseScore);
+
+        if (points < 0) points = 0;
 
         addScore?.Invoke(points);
 

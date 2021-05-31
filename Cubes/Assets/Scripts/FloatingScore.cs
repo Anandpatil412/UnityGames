@@ -10,15 +10,29 @@ public class FloatingScore : MonoBehaviour
     public float fadeDuration = 2f;
     public float speed = 2f;
 
+    [SerializeField]
+    private Color increaseScoreColor;
+    [SerializeField]
+    private Color decreaseScoreColor;
+
     private void Awake()
     {
         text = GetComponent<TextMeshPro>();
         StartCoroutine(Fade());
     }
 
-    public void UpdateFloatingScore(int newPoints)
+    public void UpdateFloatingScore(int newPoints,bool isIncrease)
     {
-        text.SetText(""+ newPoints);
+        if(isIncrease)
+        {
+            text.faceColor = increaseScoreColor;
+            text.SetText("+" + newPoints);
+        }
+        else
+        {
+            text.faceColor = decreaseScoreColor;
+            text.SetText("-" + newPoints);
+        }
     }
 
     IEnumerator Fade()
