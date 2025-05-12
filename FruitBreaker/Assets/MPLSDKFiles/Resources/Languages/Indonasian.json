@@ -1,0 +1,450 @@
+{
+    "Localisation": [
+
+        {
+            "key": "ADD CASH",
+            "value": "Tambahkan berlian"
+        },
+        {
+            "key": "ADD MONEY",
+            "value": "TAMBAH BERLIAN"
+        },
+        {
+            "key": "Available Balance",
+            "value": "Saldo Tersedia"
+        },
+        {
+            "key": "PLAY AGAIN",
+            "value": "MAIN LAGI"
+        },
+        {
+            "key": "More players = Bigger Prize",
+            "value": "Lebih banyak pemain = Hadiah Lebih Besar"
+        },
+        {
+            "key": "Bonus Cash",
+            "value": "Berlian Bonus"
+        },
+        {
+            "key": "Bonus Cash is not allowed in this battle room.",
+            "value": "Bonus Berlian tidak dapat digunakan dalam pertandingan ini"
+        },
+        {
+            "key": "Bonus Cash cannot be used for this Battle",
+            "value": "Bonus Berlian tidak dapat digunakan dalam pertandingan ini"
+        },
+        {
+            "key": "Can’t Play",
+            "value": "Yah, Gak Bisa Main"
+        },
+        {
+            "key": "Cancel",
+            "value": "Batalkan"
+        },
+        {
+            "key": "Challenge expired",
+            "value": "Mulai pertandingan"
+        },
+        {
+
+            "key": "LEAVE CHALLENGE",
+            "value": "Tinggalkan tantangan"
+        },
+        {
+
+            "key": "Leave Challenge?",
+            "value": "Tinggalkan tantangan?"
+        },
+        {
+            "key": "Waiting for player to join",
+            "value": "Mulai pertandingan"
+        },
+        {
+            "key": "Network Issue! Trying To Reconnect",
+            "value": "Ada masalah koneksi! Coba lagi"
+        },
+        {
+            "key": "Deposit Cash",
+            "value": "Berlian Top Up"
+        },
+        {
+            "key": "Tap “Try Again” or check out other Battle Rooms",
+            "value": "Klik Coba Lagi atau lihat Ruang Pertandingan lain?"
+        },
+        {
+            "key": "EXIT",
+            "value": "KELUAR"
+        },
+        {
+            "key": "EXIT BATTLE ROOM",
+            "value": "KELUAR RUANGAN PERTANDINGAN"
+        },
+        {
+            "key": "This  Battle Room is closed.",
+            "value": "Pertandingan Selesai."
+        },
+        {
+            "key": "Choose another Battle Room",
+            "value": "Pilih ruang Pertandingan lainnya"
+        },
+        {
+            "key": "Finding Player...",
+            "value": "Mencari Pemain..."
+        },
+        {
+            "key": "GO TO BATTLE ROOM",
+            "value": "KE RUANG PERTANDINGAN"
+        },
+        {
+            "key": "SCORE",
+            "value": "SKOR"
+        },
+        {
+            "key": "Could not find you a match!",
+            "value": "Tidak dapat menemukan lawan untukmu!"
+        },
+        {
+            "key": "NEW BATTLE",
+            "value": "PERTANDINGAN BARU"
+        },
+        {
+            "key": "START NEXT BATTLE",
+            "value": "MULAI PERTANDINGAN SELANJUTNYA"
+        },
+        {
+            "key": "Prize Pool",
+            "value": "MEMENANGKAN"
+        },
+        {
+            "key": "Play Again?",
+            "value": "Mau Main Lagi?"
+        },
+        {
+            "key": "Player left! Finding new player...",
+            "value": "Pemain pergi! Cari pemain baru..."
+        },
+        {
+            "key": "PRIZE BREAKUP",
+            "value": "PEMBAGIAN HADIAH"
+        },
+        {
+            "key": "Starting battle",
+            "value": "Mulai pertandingan"
+        },
+        {
+            "key": "Waiting for Players to Finish",
+            "value": "Menunggu pemain lain selesai bermain"
+        },
+        {
+            "key": "Finding Players",
+            "value": "Mencari Pemain"
+        },
+        {
+            "key": "Starting New Battle",
+            "value": "PERTANDINGAN BARU"
+        },
+        {
+            "key": "Insufficient Deposit \nand Winnings Cash",
+            "value": "Saldo Berlian Top Up dan Berlian Kemenangan Tidak Cukup"
+        },
+        {
+            "key": "Token Balance",
+            "value": "Saldo Token"
+        },
+        {
+            "key": "Total Cash Balance",
+            "value": "Saldo Tersedia"
+        },
+        {
+            "key": "TRY AGAIN",
+            "value": "COBA LAGI"
+        },
+        {
+            "key": "Play with",
+            "value": "Main dengan"
+        },
+        {
+            "key": "to Win",
+            "value": "untuk Menang"
+        },
+        {
+            "key": "Waiting for players to join...",
+            "value": "Mulai pertandingan"
+        },
+        {
+            "key": "Winnings Cash",
+            "value": "Berlian Kemenangan"
+        },
+        {
+            "key": "Finding Player…",
+            "value": "Mencari Pemain"
+        },
+        {
+            "key": "Add {0} or more Tokens to keep playing in MPL Battles!",
+            "value": "Tambahkan {0} berlian atau lebih untuk menyetor Saldo berlian untuk terus bermain di 1v1 Battles!"
+        },
+        {
+            "key": "Add ₹{0} or more Cash Balance to keep playing in 1v1 Battles!",
+            "value": "Tambahkan {0} berlian atau lebih untuk menyetor Saldo berlian untuk terus bermain di 1v1 Battles!"
+        },
+        {
+            "key": "Earn {0} or more Tokens to keep playing in MPL Battles!",
+            "value": "Dapatkan {0} atau Token untuk dapat main di Battle MPL!"
+        },
+        {
+            "key": "Insufficient Tokens",
+            "value": "Token Tidak Cukup"
+        },
+        {
+            "key": "Upto ₹{0} can be used from Bonus Cash",
+            "value": "Pakai {0} Bonus Berlian"
+        },
+        {
+            "key": "PLAYER CHALLENGE",
+            "value": "PEMAIN BATTLE"
+        },
+        {
+            "key": "PLAYER BATTLE",
+            "value": "PEMAIN BATTLE"
+        },
+        {
+            "key": "How To Play",
+            "value": "Cara Bermain"
+        },
+        {
+            "key": "BACK",
+            "value": "KEMBALI"
+        },
+        {
+            "key": "NEXT",
+            "value": "LANJUT"
+        },
+        {
+            "key": "PLAY",
+            "value": "MAIN"
+        },
+        {
+            "key": "You are now following ",
+            "value": "Kamu tidak mengikuti "
+        },
+        {
+            "key": "prize",
+            "value": "Juara"
+        },
+        {
+            "key": " players joined",
+            "value": " pemain bergabung"
+        },
+        {
+            "key": "1 player joined",
+            "value": "1 pemain bergabung"
+        },
+        {
+            "key": "2 PLAYER BATTLE",
+            "value": "2 PEMAIN BATTLE"
+        },
+        {
+            "key": "If you leave this challenge now it will be cancelled! {0} will be joining soon.",
+            "value": "Jika kamu meninggalkan tantangan sekarang, maka permainan akan berakhir."
+        },
+        {
+            "key": "WAIT FOR PLAYER",
+            "value": "Menunggu pemain lain"
+        },
+        {
+            "key": "Score not accepted!",
+            "value": "Skor tidak diterima!"
+        },
+        {
+            "key": "Your score has been rejected by our fraud check system. MPL takes cases of fraud in games seriously. If you think that we made a mistake, please contact our customer support.",
+            "value": "Skor Anda telah ditolak oleh sistem pelacak kecurangan. MPL menindaklanjuti perihal kecurangan dengan sangat serius. Jika ada kesalahan, silakan menghubungi Customer Service kami."
+        },
+        {
+            "key": "Close",
+            "value": "Tutup"
+        },
+        {
+            "key": "Fraud Policy",
+            "value": "Syarat dan Ketentuan MPL"
+        },
+        {
+            "key": "You have been playing on MPL for more than  {0}h and {1}m.How would you like to proceed?",
+            "value": "Kamu telah bermain di MPL selama lebih dari {0} jam {1} mnt. Jadi gimana, Pro?"
+        },
+        {
+            "key": "Take a Break",
+            "value": "Istirahat Dulu, Yuk!"
+        },
+        {
+            "key": "Exit Game",
+            "value": "Keluar Permainan"
+        },
+        {
+            "key": "Continue Playing",
+            "value": "Lanjut Bermain"
+        },
+        {
+            "key": "Scores of All Players are verified",
+            "value": "Skor seluruh Pemain telah terverifikasi"
+        },
+        {
+            "key": "View Transaction History",
+            "value": "Lihat Riwayat Transaksi"
+        },
+        {
+            "key": "Rematch?",
+            "value": "Mau Main Lagi?"
+
+        },
+        {
+            "key": "Rematch",
+            "value": "Main Lagi"
+
+        },
+        {
+            "key": "You got disconnected as MPL app was minimized. Please do not minimize app during a game.",
+            "value": "Permainan kamu terputus karena memperkecil layar Aplikasi MPL. Mohon tidak memperkecil layar saat permainan berlangsung."
+        },
+        {
+            "key": "Game Ended!",
+            "value": "GAME BERAKHIR!"
+        },
+        {
+            "key": "Please rotate your device to \ncontinue playing",
+            "value": "GAME BERAKHIR!"
+        },
+        {
+            "key": "Please rotate your device to \ncontinue playing",
+            "value": "Putar handphone kamu untuk \nmelanjutkan permainan"
+        },
+
+        {
+            "key": "Add {0} or more Cash Balance to keep playing in Multiplayer Battles!",
+            "value": "Tambahkan {0} atau pastikan Saldo Berlian Kamu cukup untuk melanjutkan Pertandingan Multiplayer!"
+        },
+        {
+            "key": "Add ₹{0} or more Cash Balance to keep playing in Multiplayer Battles!",
+            "value": "Tambahkan {0} atau pastikan Saldo Berlian Kamu cukup untuk melanjutkan Pertandingan Multiplayer!"
+        },
+        {
+            "key": "Add {0} or more Cash Balance to keep playing in MPL Battles!",
+            "value": "Tambahkan {0} atau pastikan Saldo Berlian Kamu cukup untuk melanjutkan Pertandingan MPL!"
+        },
+        {
+            "key": "Add ₹{0} or more Cash Balance to keep playing in MPL Battles!",
+            "value": "Tambahkan {0} atau pastikan Saldo Berlian Kamu cukup untuk melanjutkan Pertandingan MPL!"
+        },
+        {
+            "key": "Insufficient Cash",
+            "value": "Berlian Kamu Tidak Cukup"
+        },
+        {
+            "key": "You can start a new battle and not wait for all players to finish. Results of this battle can be seen in Game History.",
+            "value": "Kamu dapat memulai pertandingan baru tanpa menunggu semua pemain selesai bermain. Hasil pertandingan dapat dilihat di Riwayat."
+        },
+        {
+            "key": "Starting Challenge",
+            "value": "Memulai Pertandingan"
+        },
+        {
+            "key": "Challenge Cancelled",
+            "value": "Pertandingan Dibatalkan"
+        },
+        {
+            "key": "Are you sure?",
+            "value": "Apakah kamu yakin?"
+        },
+        {
+            "key": "You can start a new battle without waiting.Results can be seen in game history.",
+            "value": "Kamu dapat memulai pertandingan baru tanpa menunggu. Skor dapat dilihat di riwayat permainan."
+        },
+
+        {
+            "key": "RANK",
+            "value": "PERINGKAT"
+        },
+        {
+            "key": "INVALID SCORE",
+            "value": "SKOR TIDAK VALID"
+        },
+        {
+            "key": "Know More",
+            "value": "Ketahui Lebih Lanjut"
+        },
+        {
+            "key": "Verifying Scores",
+            "value": "skor sedang diverifikasi"
+        },
+        {
+            "key": "GAME OVER",
+            "value": "PERMAINAN BERAKHIR"
+        },
+        {
+            "key": "TIED",
+            "value": "SERI"
+        },
+        {
+            "key": "Verified",
+            "value": "terverifikasi"
+        },
+        {
+            "key": "Leave Battle?",
+            "value": "Keluar Pertandingan?"
+        },
+        {
+            "key": "Are you sure you want to leave now?",
+            "value": "Kamu yakin ingin keluar sekarang?"
+        },
+        {
+            "key": "Leave Battle",
+            "value": "Keluar Pertandingan"
+        },
+        {
+            "key": "Wait for players",
+            "value": "Menunggu Pemain"
+        },
+        {
+            "key": "Starting ",
+            "value": "Memulai "
+        },
+        {
+            "key": "Please revert to the original resolution to continue playing.",
+            "value": "Silakan kembali ke rosolusi semula untuk melanjutkan permainan"
+        },
+        {
+            "key": "Screen magnification detected!",
+            "value": "Perbesaran layar terdeteksi!"
+        },
+        {
+            "key": "Do not minimize or switch to a different app while waiting for your opponent or during gameplay.",
+            "value": "Jangan perkecil layar atau buka aplikasi lain saat menunggu lawan atau di tengah permainan."
+        },
+        {
+            "key": "Waiting for your opponents to join",
+            "value": "Menunggu lawan"
+        },
+        {
+            "key": "Game Cancelled",
+            "value": "Game dibatalkan"
+        },
+        {
+            "key": "Refunds will be processed",
+            "value": "Pengembalian Biaya masuk akan diproses"
+        },
+        {
+            "key": "View Policy",
+            "value": "Lihat Kebijakan"
+        },
+        {
+            "key": "Rejected Score",
+            "value": "Skor Ditolak"
+        },
+        {
+            "key": "Cheating can lead to permanent ban from MPL",
+            "value": "Main curang bisa bikin  diblokir permanen oleh MPL"
+        }
+
+
+    ]
+  
+}

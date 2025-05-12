@@ -1,0 +1,23 @@
+﻿<Properties StartupConfiguration="{84174D7D-7DCC-4544-112F-78637EC20626}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/BoxManager.cs">
+    <Files>
+      <File FileName="Assets/Scripts/Box.cs" Line="92" Column="51" />
+      <File FileName="Assets/Scripts/BoxManager.cs" Line="41" Column="19" />
+      <File FileName="Assets/Scripts/Timer.cs" />
+      <File FileName="Assets/Scripts/Score.cs" />
+      <File FileName="Assets/Scripts/GameOver.cs" />
+      <File FileName="Assets/Scripts/ColContainer.cs" />
+      <File FileName="Assets/Scripts/FloatingScore.cs" />
+      <File FileName="Assets/Scripts/SoundManager.cs" />
+      <File FileName="Assets/Scripts/GameAssets.cs" />
+      <File FileName="Assets/Scripts/GoodText.cs" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="c28df342-de46-451a-8e3b-854ef402731e" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

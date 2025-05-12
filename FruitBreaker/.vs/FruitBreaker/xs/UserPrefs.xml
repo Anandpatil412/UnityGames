@@ -1,0 +1,36 @@
+﻿<Properties StartupConfiguration="{40C30FB3-007A-C1CA-8211-76C8CBA35663}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/BoxManager.cs">
+    <Files>
+      <File FileName="Assets/Scripts/BoxManager.cs" Line="862" Column="1" />
+      <File FileName="Assets/Scripts/Timer.cs" />
+      <File FileName="Assets/Scripts/GameOver.cs" />
+      <File FileName="Assets/Scripts/Score.cs" />
+      <File FileName="Assets/MPLSDKFiles/MPLWrapper/FruitBreakerSessionResult.cs" />
+      <File FileName="Assets/MPLSDKFiles/MPLWrapper/FruitBreakerSessionInfo.cs" />
+      <File FileName="Assets/MPLSDKFiles/MPLDirector.cs" />
+      <File FileName="Assets/Scripts/SoundManager.cs" />
+      <File FileName="Assets/Scripts/Box.cs" Line="18" Column="4" />
+      <File FileName="Assets/ObjectPooler.cs" Line="54" Column="41" />
+      <File FileName="Assets/Scripts/FloatingScore.cs" Line="55" Column="31" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="FruitBreaker" expanded="True" selected="True" />
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.UnitTesting.TestPad">
+        <State name="__root__">
+          <Node name="Unity" expanded="True" selected="True" />
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="93edeafa-d879-44ee-b215-d2cf9c180db6" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

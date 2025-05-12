@@ -1,0 +1,104 @@
+{
+	"LobbyId": 137428,
+	"Is1v1": true,
+	"GameId": 1969,
+	"GameName": "FruitBreaker",
+	"SessionId": "KjkOYXYrIK986K3khWD6",
+	"StartTime": 1532935460372,
+	"CountryCode": "IN",
+	"Seed": -1,
+	"Time": 30,
+	"MaxGameplayDuration": 20,
+	"TournamentEndTime": 0,
+	"AutoStartTimer": 15,
+	"TournamentId": 0,
+	"IsAsyncGame": true,
+	"IsKnockoutLobby": false,
+	"ApplyBonusLimit": true,
+	"BonusLimit": 5,
+	"landscape": true,
+	"IsLogEnabled": true,
+	"InstalledApkVersionCode": 1,
+	"TotalPlayers": 2,
+	"IsAutoStartEnabled": true,
+	"IsUpsellEnabled": true,
+	"TournamentName": "Default",
+	"GameConfigName": "Default",
+	"GameFormat": "Pool",
+	"MaxPauseDuration": 15,
+	"SequenceInterval": 10000,
+	"Overs": {
+		"overData": [
+			{
+				"overType": 4,
+				"overDifficulty": 3
+			},
+			{
+				"overType": 4,
+				"overDifficulty": 3
+			},
+			{
+				"overType": 4,
+				"overDifficulty": 3
+			},
+			{
+				"overType": 4,
+				"overDifficulty": 3
+			},
+			{
+				"overType": 4,
+				"overDifficulty": 3
+			}
+		]
+	},
+	"Marker": false,
+	"Wickets": 5,
+	"PlayerTeam": 0,
+	"OpponentTeam": 1,
+	"CelebrationScores": [ 10, 20, 30 ],
+	"EnablePumaBranding": false,
+	"isTierEnabled": false,
+	"HostUrl": "https://tpapi.mpl.live",
+	"Host": "tp-gs.mpl.live",
+	"Zone": "MPLSFS2X",
+	"IsInDebugMode": false,
+	"ConnectionRetryTimeout": 10,
+	"CreateGameTimeout": 30,
+	"BattleAgainTimeout": 10,
+	"PingInterval": 5,
+	"MaxPongDelay": 10,
+	"EntryFee": 0,
+	"EntryCurrency": "TOKEN",
+	"WinningAmount": 10000,
+	"TournamentType": "1v1",
+	"CreatingGameSubtitleText": "Battle Fee will be refunded if Battle does not start!",
+	"ShowCreatingGameSubtitle": true,
+	"ICLostTitle": "Connection Interrupt!",
+	"ICLostMessage": "You got disconnected from the game!",
+	"LoadingMessages1v1": [ "Loading Message 1!", "Loading Message 2" ],
+	"AuthToken": "KQQRi^+r8pKKi1?kNVEFkN<[Pma2vY[hI57dlASY.oiYOs;bI:gRuH%7x:=Ub:wLzAF$Pz(je833[JOFAl+j)-$md7T(EVrwcJwJz7Yj3fxz&p8v7%yR+6Cy=l8GNXV):Co3tqBIHix-!&FV%Ho)JrJbs(8JZiQY;MHAc*&!MGv2mLy[)shgOmw2HUU1KS<]8B75%?6NS",
+	"Profile": {
+		"id": 681270,
+		"mobileNumber": "+919606622168",
+		"displayName": "96*****168",
+		"avatars": {
+			"small": "",
+			"regular": ""
+		},
+		"avatar": "",
+		"newUser": false,
+		"referralCode": "FZNQ51",
+		"coverPhoto": "",
+		"coverPhotos": {
+			"small": "",
+			"regular": ""
+		},
+		"tier": "Gold",
+		"pro": true,
+		"ownProfile": false
+	},
+
+	"decreaseScoreOnWrongMove": 2,
+	"boxSpawnTimeGap": 0.8,
+	"nextBoxSetSpawnTimeGap": 1.5
+}
